@@ -12,5 +12,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // 
 Route::get('subs', function () {
-    return view('subs');
+    if (Gate::allows('subs-only', Auth::user())) {
+        return view('subs');
+    }else{
+        return 'You are not a subscriber';
+    }
 });

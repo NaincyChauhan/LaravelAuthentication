@@ -18,7 +18,15 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a style="float: right;" href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        @can('subs-only', Auth::user())
                         <a style="float: right;" href="{{ url('/subs') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Subscribe</a>
+                        @endcan
+
+                        @can('subsciber-only', Auth::user())
+                        <a style="float: right;" href="{{ url('/subs') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Subscribe  only</a>
+                        @endcan
+
+                        
                     @else
                         <a style="float: right;" href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
